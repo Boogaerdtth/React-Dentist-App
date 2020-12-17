@@ -43,6 +43,7 @@ function getAppointmentByDay(props) {
         submitNewPatient={props.submitNewPatient}
         submitNewAppointment={props.submitNewAppointment}
         numberOfDay={props.numberOfDay}
+        numberOfTime={props.numberOfTime}
         query={props.query}
         handleInputChange={props.handleInputChange}
         state={props.state}

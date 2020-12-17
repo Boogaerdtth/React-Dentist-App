@@ -49,12 +49,8 @@ class Container extends React.Component {
     // er wordt een nieuwe afspraak toegevoegd, alleen die tijd en datum wordt nog niet toegevoegd. 
     // wordt nog niet goed gelinkt
 
-    // het nummer dat wordt ingevoerd in het formulier moet het nummer van de bepaalde dag van de maand zijn
-    // dus dag 2 moet de eerste dinsdag zijn in het rooster
     submitNewAppointment = appointment => {
         appointment.preventDefault()
-        console.log(this.state.numberOfDay)
-        // const getSpecificAppointment = () => {
         const newAppointment = {
             day: this.state.numberOfDay,
             time: this.state.numberOfTime,
@@ -63,14 +59,10 @@ class Container extends React.Component {
         }
         // dentist: getRandomDentist(),
         // assistant: getAssistent(),
-
-        // hier moet de dag van de maand komen
         this.setState(prevState => {
             const newList = prevState.appointments.concat(newAppointment)
             // return { appointments: newList }
             console.log(newList)
-            // console.log(getSpecificAppointment)
-
         })
 
     }
@@ -94,6 +86,8 @@ class Container extends React.Component {
     }
 
     render() {
+        console.log(this.state.numberOfDay)
+
         return (
             <main>
                 <Switch>
@@ -105,6 +99,7 @@ class Container extends React.Component {
                             state={this.state}
                             submitNewAppointment={this.submitNewAppointment}
                             numberOfDay={this.numberOfDay}
+                            numberOfTime={this.numberOfTime}
                             query={this.query}
                             handleInputChange={this.handleInputChange}
                             Suggestions={this.Suggestions} />

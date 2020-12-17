@@ -2,7 +2,7 @@ import React from 'react'
 
 function Inputfields(props) {
 
-    // console.log(props)
+    console.log(props.state.numberOfTime)
     return (
         <div>
             <form onSubmit={props.submitNewPatient}>
@@ -62,17 +62,20 @@ function Inputfields(props) {
                     value={props.state.surname}
                 ></input>
                 <p>{props.query}</p>
+
                 <input
                     type="number"
                     min='1'
                     max='28'
-                    value={props.numberOfDay}
+                    value={props.state.numberOfDay}
+                    onChange={props.handleChange}
                     placeholder='dag'></input>
                 <input
                     type="number"
                     min='09'
                     max='18'
-                    value={props.numberOfTime}
+                    value={props.state.numberOfTime}
+                    onChange={props.handleChange}
                     placeholder='uur'></input>
                 <button>Maak afspraak aan</button>
             </form>
