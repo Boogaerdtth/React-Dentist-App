@@ -16,7 +16,6 @@ const appointments = generateRandomAppointments(20);
 // ik moet de afspraken op de dag sorteren op de tijd
 
 // er moeten afspraken kunnen worden toegeovegd met random personen
-// ik wil opties naar voren krijgen als ik de eerste letters van de namen invoer
 
 
 class Container extends React.Component {
@@ -33,7 +32,10 @@ class Container extends React.Component {
             phone: '',
             birthyear: '',
             numberOfDay: '',
-            // appointments: generateRandomAppointments(20)
+            numberOfTime: '',
+            query: '',
+            appointments: generateRandomAppointments(20),
+            results: []
         }
 
         // this.submitSickDentist = this.submitSickDentist.bind(this)
@@ -41,21 +43,38 @@ class Container extends React.Component {
     }
 
     handleChange = event => {
-        const { name, value } = event.target
+        const { name, value, } = event.target
         this.setState({ [name]: value })
     }
+    // er wordt een nieuwe afspraak toegevoegd, alleen die tijd en datum wordt nog niet toegevoegd. 
+    // wordt nog niet goed gelinkt
 
     // het nummer dat wordt ingevoerd in het formulier moet het nummer van de bepaalde dag van de maand zijn
     // dus dag 2 moet de eerste dinsdag zijn in het rooster
     submitNewAppointment = appointment => {
         appointment.preventDefault()
+        console.log(this.state.numberOfDay)
+        // const getSpecificAppointment = () => {
+        const newAppointment = {
+            day: this.state.numberOfDay,
+            time: this.state.numberOfTime,
+            name: this.state.name,
+            surname: this.state.surname
+        }
+        // dentist: getRandomDentist(),
+        // assistant: getAssistent(),
 
+        // hier moet de dag van de maand komen
         this.setState(prevState => {
-            const newList = prevState.appointments.concat(appointment)
-            return { appointments: newList }
+            const newList = prevState.appointments.concat(newAppointment)
+            // return { appointments: newList }
+            console.log(newList)
+            // console.log(getSpecificAppointment)
+
         })
+
     }
-    // submitSickDentist
+
     submitNewPatient = event => {
         event.preventDefault()
         const newPatient = {
@@ -74,7 +93,6 @@ class Container extends React.Component {
         this.setState({ name: "", surname: "", email: "", phone: "", birthyear: "" })
     }
 
-
     render() {
         return (
             <main>
@@ -86,7 +104,10 @@ class Container extends React.Component {
                             handleChange={this.handleChange}
                             state={this.state}
                             submitNewAppointment={this.submitNewAppointment}
-                            numberOfDay={this.numberOfDay} />
+                            numberOfDay={this.numberOfDay}
+                            query={this.query}
+                            handleInputChange={this.handleInputChange}
+                            Suggestions={this.Suggestions} />
                     </Route>
                     <Route path="/day">
                         <Day appointments={appointments.filter(app => app.day === 1)} />

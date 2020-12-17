@@ -42,7 +42,12 @@ function getAppointmentByDay(props) {
       <Inputfields
         submitNewPatient={props.submitNewPatient}
         submitNewAppointment={props.submitNewAppointment}
-        numberOfDay={props.numberOfDay} />
+        numberOfDay={props.numberOfDay}
+        query={props.query}
+        handleInputChange={props.handleInputChange}
+        state={props.state}
+        Suggestions={props.Suggestions}
+        handleChange={props.handleChange} />
       <div className="calendarview">
         <div className="header">
           <div>Maandag</div>
