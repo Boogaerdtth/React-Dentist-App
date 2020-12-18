@@ -8,7 +8,6 @@ export default ({ time, patient, dentist }) => (
     <br />
     <span className="dentist">Tandarts: {dentist}</span>
     <br />
-    {/* <span className="patient">Patient: {patient}</span> */}
     <span>Patient: {patient} </span>
   </div>
 );

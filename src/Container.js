@@ -26,11 +26,14 @@ class Container extends React.Component {
             //moet ik nog id's toevoegen aan allemaal?
             dentists,
             assistents,
+            time: 0,
+            day: 0,
             name: '',
             surname: '',
             email: '',
             phone: '',
             birthyear: '',
+            patient: '',
             numberOfDay: '',
             numberOfTime: '',
             query: '',
@@ -42,27 +45,33 @@ class Container extends React.Component {
         this.submitNewPatient = this.submitNewPatient.bind(this)
     }
 
+    getAssistent = () => {
+        const assistent = assistents[Math.floor(Math.random() * 2)]
+        return `${assistent.name} ${assistent.surname}`
+    }
+
+    getRandomDentist = () => {
+        const dentist = dentists[Math.floor(Math.random() * 4)]
+        return `${dentist.name} ${dentist.surname}`
+    }
     handleChange = event => {
         const { name, value, } = event.target
         this.setState({ [name]: value })
     }
-    // er wordt een nieuwe afspraak toegevoegd, alleen die tijd en datum wordt nog niet toegevoegd. 
-    // wordt nog niet goed gelinkt
-
+    // hoe kan ik zorgen dat de nieuwe afspraak ook wordt getoond in het rooster?
     submitNewAppointment = appointment => {
         appointment.preventDefault()
         const newAppointment = {
-            day: this.state.numberOfDay,
-            time: this.state.numberOfTime,
-            name: this.state.name,
-            surname: this.state.surname
+            day: +this.state.day,
+            time: +this.state.time,
+            patient: this.state.name + ' ' + this.state.surname,
+            dentist: this.getRandomDentist(),
+            assistant: this.getAssistent(),
         }
-        // dentist: getRandomDentist(),
-        // assistant: getAssistent(),
         this.setState(prevState => {
             const newList = prevState.appointments.concat(newAppointment)
-            // return { appointments: newList }
-            console.log(newList)
+            return { appointments: newList }
+            // console.log(newList)
         })
 
     }
@@ -86,8 +95,6 @@ class Container extends React.Component {
     }
 
     render() {
-        console.log(this.state.numberOfDay)
-
         return (
             <main>
                 <Switch>
@@ -102,7 +109,9 @@ class Container extends React.Component {
                             numberOfTime={this.numberOfTime}
                             query={this.query}
                             handleInputChange={this.handleInputChange}
-                            Suggestions={this.Suggestions} />
+                            Suggestions={this.Suggestions}
+                            day={this.state.day}
+                            time={this.state.time} />
                     </Route>
                     <Route path="/day">
                         <Day appointments={appointments.filter(app => app.day === 1)} />

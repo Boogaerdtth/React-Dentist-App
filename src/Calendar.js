@@ -20,11 +20,14 @@ const divideByDay = appointments => {
 
 function getAppointmentByDay(props) {
   const appointmentsByDay = divideByDay(props.appointments);
-  const daysInMonthJSX = Object.values(
-    appointmentsByDay
-  ).map((appointmentsInDay, index) => (
-    <DayInMonth appointments={appointmentsInDay} key={index} />
-  ));
+  const daysInMonthJSX = Object.values(appointmentsByDay)
+    .map((appointmentsInDay, index) => (
+      <DayInMonth
+        appointments={appointmentsInDay}
+        key={index}
+        submitNewAppointment={props.submitNewAppointment}
+      />
+    ));
 
   // export default ({ appointments, submitNewPatients }) => {
   //   const appointmentsByDay = divideByDay(appointments);
@@ -48,7 +51,9 @@ function getAppointmentByDay(props) {
         handleInputChange={props.handleInputChange}
         state={props.state}
         Suggestions={props.Suggestions}
-        handleChange={props.handleChange} />
+        handleChange={props.handleChange}
+        day={props.state.day}
+        time={props.state.time} />
       <div className="calendarview">
         <div className="header">
           <div>Maandag</div>
