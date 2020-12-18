@@ -95,12 +95,14 @@ class Container extends React.Component {
     }
 
     render() {
+        console.log(this.state.appointments)
+
         return (
             <main>
                 <Switch>
                     <Route path="/calendar">
                         <Calendar
-                            appointments={appointments}
+                            appointments={this.state.appointments}
                             submitNewPatient={this.submitNewPatient}
                             handleChange={this.handleChange}
                             state={this.state}
