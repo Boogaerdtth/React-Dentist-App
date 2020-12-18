@@ -9,7 +9,6 @@ import generateRandomAppointments from "./utils"
 import { names, dentists, assistents } from './utils'
 
 // ik wil mn button instellen dat de zieken een rood vlak krijgen.
-
 // ik moet de afspraken op de dag sorteren op de tijd
 
 class Container extends React.Component {
@@ -17,7 +16,6 @@ class Container extends React.Component {
         super(props)
         this.state = {
             names,
-            //moet ik nog id's toevoegen aan allemaal?
             dentists,
             assistents,
             time: 0,
@@ -28,14 +26,12 @@ class Container extends React.Component {
             phone: '',
             birthyear: '',
             patient: '',
-            numberOfDay: '',
-            numberOfTime: '',
-            query: '',
             appointments: generateRandomAppointments(20),
-            results: []
+            sickDentist: '',
+            styles: ''
         }
 
-        // this.submitSickDentist = this.submitSickDentist.bind(this)
+        this.submitSickDentist = this.submitSickDentist.bind(this)
         this.submitNewPatient = this.submitNewPatient.bind(this)
     }
 
@@ -52,6 +48,27 @@ class Container extends React.Component {
         const { name, value, } = event.target
         this.setState({ [name]: value })
     }
+
+    submitSickDentist = event => {
+        event.preventDefault()
+        this.setState(prevState => {
+            const newState = { ...prevState };
+            if (prevState.sickdentist.length > 2) {
+                newState.styles = newState.styles = 'red'
+                return newState
+            }
+        })
+    }
+
+    deleteSong = (id) => {
+        this.setState((prevState) => {
+            const newState = { ...prevState };
+            newState.songs = newState.songs.filter(song => song.id !== id);
+            return newState;
+        })
+    }
+    // alleen nog een werkende kleur rood!!!!
+
     submitNewAppointment = appointment => {
         appointment.preventDefault()
         const newAppointment = {
@@ -65,7 +82,6 @@ class Container extends React.Component {
             const newList = prevState.appointments.concat(newAppointment)
             return { appointments: newList }
         })
-
     }
 
     submitNewPatient = event => {
@@ -87,6 +103,7 @@ class Container extends React.Component {
     }
 
     render() {
+        console.log(this)
         return (
             <main>
                 <Switch>
@@ -94,11 +111,14 @@ class Container extends React.Component {
                         <Calendar
                             appointments={this.state.appointments}
                             submitNewPatient={this.submitNewPatient}
+                            submitSickDentist={this.submitSickDentist}
                             handleChange={this.handleChange}
                             state={this.state}
                             submitNewAppointment={this.submitNewAppointment}
                             day={this.state.day}
-                            time={this.state.time} />
+                            time={this.state.time}
+                            styles={this.state.styles}
+                        />
                     </Route>
                     <Route path="/day">
                         <Day appointments={this.state.appointments} />
@@ -107,12 +127,8 @@ class Container extends React.Component {
                         <Home />
                     </Route>
                 </Switch>
-            </main>
+            </main >
         )
     }
 }
-
-
-
-
 export default Container

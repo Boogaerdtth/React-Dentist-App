@@ -85,11 +85,10 @@ function Inputfields(props) {
             <br />
             <form onSubmit={props.submitSickDentist}>
                 <select
-                    // value='hallo'/*{props.rating}*/
-                    name='rating'
+                    value={props.state.sickdentist}
+                    name='sickdentist'
                     onChange={props.handleChange}
-                    required
-                    className="inputfield">
+                    required>
                     <option value="">-- Selecteer tandarts --</option>
                     <option value='J. van de Velde'>J. Van de Velde</option>
                     <option value="J. van Loon">J. van Loon</option>

@@ -355,25 +355,32 @@ const dentists = [
     name: "J. van de",
     surname: "Velde",
     phone: '06-12345679',
-    email: 'jaap@tandartspraktijkbvt.nl'
+    email: 'jaap@tandartspraktijkbvt.nl',
+    isSick: false
   },
   {
     name: "J. van",
     surname: "Loon",
     phone: '06-12345679',
-    email: 'johanneke@tandartspraktijkbvt.nl'
+    email: 'johanneke@tandartspraktijkbvt.nl',
+    isSick: false
+
   },
   {
     name: "M. van",
     surname: "Veen",
     phone: '06-12345679',
-    email: 'mirthe@tandartspraktijkbvt.nl'
+    email: 'mirthe@tandartspraktijkbvt.nl',
+    isSick: false
+
   },
   {
     name: "L.",
     surname: "Wolters",
     phone: '06-12345679',
-    email: 'leentje@tandartspraktijkbvt.nl'
+    email: 'leentje@tandartspraktijkbvt.nl',
+    isSick: false
+
   },
 
 ]
@@ -382,13 +389,17 @@ const assistents = [
     name: "M. de",
     surname: "Vos",
     phone: '06-12345679',
-    email: 'michiel@tandartspraktijkbvt.nl'
+    email: 'michiel@tandartspraktijkbvt.nl',
+    isSick: false
+
   },
   {
     name: "W. van der",
     surname: "Horst",
     phone: '06-12345679',
-    email: 'wies@tandartspraktijkbvt.nl'
+    email: 'wies@tandartspraktijkbvt.nl',
+    isSick: false
+
   },
 ]
 
