@@ -8,15 +8,9 @@ import Day from "./Day";
 import generateRandomAppointments from "./utils"
 import { names, dentists, assistents } from './utils'
 
-const appointments = generateRandomAppointments(20);
-
 // ik wil mn button instellen dat de zieken een rood vlak krijgen.
-// immutable is gewoon dat je niet de state rechtstreeks aanpast. vooral met concat
 
 // ik moet de afspraken op de dag sorteren op de tijd
-
-// er moeten afspraken kunnen worden toegeovegd met random personen
-
 
 class Container extends React.Component {
     constructor(props) {
@@ -58,7 +52,6 @@ class Container extends React.Component {
         const { name, value, } = event.target
         this.setState({ [name]: value })
     }
-    // hoe kan ik zorgen dat de nieuwe afspraak ook wordt getoond in het rooster?
     submitNewAppointment = appointment => {
         appointment.preventDefault()
         const newAppointment = {
@@ -71,7 +64,6 @@ class Container extends React.Component {
         this.setState(prevState => {
             const newList = prevState.appointments.concat(newAppointment)
             return { appointments: newList }
-            // console.log(newList)
         })
 
     }
@@ -95,8 +87,6 @@ class Container extends React.Component {
     }
 
     render() {
-        console.log(this.state.appointments)
-
         return (
             <main>
                 <Switch>
@@ -107,16 +97,11 @@ class Container extends React.Component {
                             handleChange={this.handleChange}
                             state={this.state}
                             submitNewAppointment={this.submitNewAppointment}
-                            numberOfDay={this.numberOfDay}
-                            numberOfTime={this.numberOfTime}
-                            query={this.query}
-                            handleInputChange={this.handleInputChange}
-                            Suggestions={this.Suggestions}
                             day={this.state.day}
                             time={this.state.time} />
                     </Route>
                     <Route path="/day">
-                        <Day appointments={appointments.filter(app => app.day === 1)} />
+                        <Day appointments={this.state.appointments} />
                     </Route>
                     <Route path="/">
                         <Home />

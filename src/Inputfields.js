@@ -1,8 +1,6 @@
 import React from 'react'
 
 function Inputfields(props) {
-
-    // console.log(props.state.time)
     return (
         <div>
             <form onSubmit={props.submitNewPatient}>
@@ -44,9 +42,11 @@ function Inputfields(props) {
                 ></input>
                 <button>Voeg nieuwe patient toe</button>
             </form>
-            <h3>{props.state.name}</h3>
             <hr />
             <br />
+            <h3>{props.state.name} {props.state.surname} {props.state.email} {props.state.phone} {props.state.birthyear}</h3>
+            <br />
+            <hr />
             <form onSubmit={props.submitNewAppointment}>
                 <input
                     type="text"

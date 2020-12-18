@@ -16,8 +16,6 @@ const divideByDay = appointments => {
 };
 
 
-
-
 function getAppointmentByDay(props) {
   const appointmentsByDay = divideByDay(props.appointments);
   const daysInMonthJSX = Object.values(appointmentsByDay)
@@ -28,16 +26,6 @@ function getAppointmentByDay(props) {
         submitNewAppointment={props.submitNewAppointment}
       />
     ));
-
-  // export default ({ appointments, submitNewPatients }) => {
-  //   const appointmentsByDay = divideByDay(appointments);
-  //   console.log({ submitNewPatients })
-  //   const daysInMonthJSX = Object.values(
-  //     appointmentsByDay
-  //   ).map((appointmentsInDay, index) => (
-  //     <DayInMonth appointments={appointmentsInDay} key={index} />
-  //   ));
-  // const filteredDaysInMonthJSX = daysInMonthJSX.sort()
 
 
   return (

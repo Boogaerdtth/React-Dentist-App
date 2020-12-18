@@ -420,14 +420,6 @@ const getRandomTime = () => {
 
 const getRandomDay = () => Math.floor(Math.random() * 28) + 1;
 
-// generateSpecificAppointment = () => ({
-//     day: this.state.numberOfDay,
-//     time: getRandomTime(),
-//     patient: getRandomName(),
-//     dentist: getRandomDentist(),
-//     assistant: getAssistent(),
-// })
-
 const generateRandomAppointment = () => ({
   day: getRandomDay(),
   time: getRandomTime(),
@@ -438,9 +430,6 @@ const generateRandomAppointment = () => ({
 
 
 const generateRandomAppointments = num =>
-  // if (props.numberOfDay) {
-  //     generateSpecificAppointment
-  // } else {
   Array(num)
     .fill(0)
     .map(_ => generateRandomAppointment());

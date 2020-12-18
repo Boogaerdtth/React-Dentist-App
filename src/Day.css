@@ -20,12 +20,15 @@
   background-color: aquamarine;
 }
 
-.dayview .patient {
-  font-weight: bold;
-  background-color: deepskyblue;
-}
+/* .dayview .patient {
+  /* font-weight: bold; */
+ */
 
 .dayview .dentist,
 .dayview .assistant {
-  padding: 10px;
+  padding:10px;
+}
+.dayview .dentist{
+  background-color: deepskyblue;
+
 }

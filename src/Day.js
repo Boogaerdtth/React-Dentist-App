@@ -2,8 +2,9 @@ import React from "react";
 import "./Day.css";
 import AppointmentInDay from "./AppointmentInDay";
 
-export default ({ appointments }) => {
-  const appointmentsJSX = appointments
+function Day(props) {
+  const dayAppointment = props.appointments.filter(app => app.day === 1)
+  const appointmentsJSX = dayAppointment
     .map(
       ({ time, patient, dentist, assistant }, index) => (
         <AppointmentInDay
@@ -15,5 +16,8 @@ export default ({ appointments }) => {
         />
       )
     );
-  return <ul className="dayview">{appointmentsJSX}</ul>;
-};
+  return (
+    <ul className="dayview">{appointmentsJSX}</ul>
+  )
+}
+export default Day
